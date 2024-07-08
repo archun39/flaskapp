@@ -7,6 +7,7 @@ pipeline {
 	stages {
 		stage("init") {
 			steps {
+				echo 'update complete'
 				script {
 					gv = load "script.groovy"
 				}
