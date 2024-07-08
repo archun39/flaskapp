@@ -5,7 +5,11 @@ pipeline {
    stages {
 
       stage("build") {
-
+          when {
+             expression {
+                env.GIT_BRANCH == 'origin/main'
+             }
+         }
          steps {
 
             echo 'building the applicaiton...'
@@ -15,6 +19,11 @@ pipeline {
       }
 
       stage("test") {
+         when {
+             expression {
+                env.GIT_BRANCH == 'origin/test' || env.GIT_BRANCH == ''
+             }
+         }
 
          steps {
 
